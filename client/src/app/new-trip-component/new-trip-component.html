@@ -1,1 +1,56 @@
-<p>new-trip-component works!</p>
+<form [formGroup]="tripForm" (ngSubmit)="onSubmit()">
+  <!-- user's name for the trip -->
+  <div>
+    <label for="">Name</label>
+    <input type="text" placeholder="Name your trip" formControlName="tripName" />
+  </div>
+
+  <!-- checkbox -->
+  <div formGroupName="tripType">
+    <label>Trip type</label>
+    <div>
+      <input type="checkbox" formControlName="solo" id="solo" />
+      <label for="solo">Solo</label>
+    </div>
+    <div>
+      <input type="checkbox" formControlName="family" id="family" />
+      <label for="family">Family</label>
+    </div>
+    <div>
+      <input type="checkbox" formControlName="friends" id="friends" />
+      <label for="friends">Friends</label>
+    </div>
+    <div>
+      <input type="checkbox" formControlName="business" id="business" />
+      <label for="business">Business</label>
+    </div>
+  </div>
+
+  <!-- destination -->
+  <div>
+    <label for="">Destination</label>
+    <input type="text" placeholder="Trip destination" formControlName="destination" />
+  </div>
+
+  <!-- dates -->
+  <div>
+    <label for="">Arrival Date</label>
+    <input type="date" formControlName="arrivalDate" />
+  </div>
+
+  <div>
+    <label for="">Departure Date</label>
+    <input type="date" formControlName="departureDate" />
+  </div>
+
+  <!-- accommodation + parking -->
+  <div formGroupName="accommodation">
+    <label for="accommodationName">Accommodation</label>
+    <input type="text" placeholder="Accommodation" formControlName="name" />
+
+    <input type="checkbox" formControlName="parking" id="parking" />
+    <label for="parking">Parking available</label>
+  </div>
+
+  <button type="submit">Submit</button>
+</form>
