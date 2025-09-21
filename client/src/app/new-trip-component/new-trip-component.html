@@ -1,56 +1,59 @@
 <form [formGroup]="tripForm" (ngSubmit)="onSubmit()">
   <!-- user's name for the trip -->
   <div>
-    <label for="">Name</label>
-    <input type="text" placeholder="Name your trip" formControlName="tripName" />
+    <label for="">Name <span class="required">*</span></label>
+    <input
+      type="text"
+      placeholder="Name your trip"
+      formControlName="tripName"
+      required="Name is required"
+    />
   </div>
 
-  <!-- checkbox -->
-  <div formGroupName="tripType">
-    <label>Trip type</label>
-    <div>
-      <input type="checkbox" formControlName="solo" id="solo" />
-      <label for="solo">Solo</label>
-    </div>
-    <div>
-      <input type="checkbox" formControlName="family" id="family" />
-      <label for="family">Family</label>
-    </div>
-    <div>
-      <input type="checkbox" formControlName="friends" id="friends" />
-      <label for="friends">Friends</label>
-    </div>
-    <div>
-      <input type="checkbox" formControlName="business" id="business" />
-      <label for="business">Business</label>
-    </div>
+  <!-- dropdown select for trip type -->
+  <div>
+    <label for="tripType">Trip type</label>
+    <select id="tripType" [formControl]="tripTypeControl">
+      <option value="">Select trip type</option>
+      <option value="solo">Solo trip</option>
+      <option value="family">Family trip</option>
+      <option value="friends">Friends trip</option>
+      <option value="business">Business trip</option>
+    </select>
   </div>
 
   <!-- destination -->
   <div>
-    <label for="">Destination</label>
-    <input type="text" placeholder="Trip destination" formControlName="destination" />
+    <label for="">Destination <span class="required">*</span></label>
+    <input
+      type="text"
+      placeholder="Trip destination"
+      formControlName="destination"
+      required="Destination is required"
+    />
   </div>
 
   <!-- dates -->
   <div>
     <label for="">Arrival Date</label>
-    <input type="date" formControlName="arrivalDate" />
+    <input type="date" formControlName="arrivalDate" id="arrivalDate" [min]="arrivalMinDate" />
   </div>
 
   <div>
     <label for="">Departure Date</label>
-    <input type="date" formControlName="departureDate" />
+    <input type="date" formControlName="departureDate" [min]="departureMinDate" />
   </div>
 
   <!-- accommodation + parking -->
   <div formGroupName="accommodation">
     <label for="accommodationName">Accommodation</label>
-    <input type="text" placeholder="Accommodation" formControlName="name" />
+    <input type="text" placeholder="Accommodation name" formControlName="name" />
+
+    <input type="url" placeholder="Accommodation link" formControlName="link" />
 
     <input type="checkbox" formControlName="parking" id="parking" />
     <label for="parking">Parking available</label>
   </div>
 
-  <button type="submit">Submit</button>
+  <button type="submit" [disabled]="tripForm.invalid" class="submit-btn">Submit</button>
 </form>
