@@ -24,11 +24,17 @@ export class TripService {
     return this.http.post<Trip>(this.apiUrl, trip);
   }
 
-  getTrips() {}
+  getTrips(): Observable<Trip[]> {
+    return this.http.get<Trip[]>(this.apiUrl);
+  }
 
-  getTrip(id: string) {}
+  getTrip(id: string): Observable<Trip> {
+    return this.http.get<Trip>(`${this.apiUrl}/${id}`);
+  }
 
-  deleteTrip(id: string) {}
+  deleteTrip(id: string) {
+    return this.http.delete<Trip>(`${this.apiUrl}/${id}`);
+  }
 
   updateTrip(id: string) {}
 }
