@@ -1,0 +1,6 @@
+#home {
+  background-image: url('../../assets/travel3-2-80.JPG');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+}

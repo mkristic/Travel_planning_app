@@ -1,21 +1,24 @@
-<h2>Trip List</h2>
+<div class="container mt-4">
+  <h2>Trip List</h2>
 
-<ul *ngIf="trips.length; else noTrips">
-  <li *ngFor="let trip of trips">
-    <div class="card" style="width: 18rem">
-      <div class="card-body">
-        <h5 class="card-title">{{ trip.tripName }}</h5>
-        <h6 class="card-subtitle mb-2 text-body-secondary">{{ trip.destination }}</h6>
-        <p>
-          {{ trip.arrivalDate | date : 'dd.MM.yyyy' }} -
-          {{ trip.departureDate | date : 'dd.MM.yyyy' }}
-        </p>
+  <ul *ngIf="trips.length; else noTrips">
+    <li *ngFor="let trip of trips">
+      <div class="card" style="width: 18rem">
+        <div class="card-body">
+          <h5 class="card-title">{{ trip.tripName }}</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary">{{ trip.destination }}</h6>
+          <p>
+            <i class="bi bi-calendar-range"></i>
+            {{ trip.arrivalDate | date : 'dd.MM.yyyy' }} -
+            {{ trip.departureDate | date : 'dd.MM.yyyy' }}
+          </p>
+        </div>
       </div>
-    </div>
-  </li>
-</ul>
+    </li>
+  </ul>
 
-<!-- if there are no planned trips -->
-<ng-template #noTrips>
-  <p>No trips planned.</p>
-</ng-template>
+  <!-- if there are no planned trips -->
+  <ng-template #noTrips>
+    <p>No trips planned.</p>
+  </ng-template>
+</div>

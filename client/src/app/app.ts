@@ -1,13 +1,13 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-
 import { HomeComponent } from './home-component/home-component';
 import { NewTripComponent } from './new-trip-component/new-trip-component';
 import { TripListComponent } from './trip-list-component/trip-list-component';
+import { NavbarComponent } from './navbar-component/navbar-component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HomeComponent, NewTripComponent, TripListComponent],
+  imports: [RouterOutlet, HomeComponent, NewTripComponent, TripListComponent, NavbarComponent],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

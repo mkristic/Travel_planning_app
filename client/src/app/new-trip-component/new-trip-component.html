@@ -1,59 +1,126 @@
-<form [formGroup]="tripForm" (ngSubmit)="onSubmit()">
-  <!-- user's name for the trip -->
-  <div>
-    <label for="">Name <span class="required">*</span></label>
-    <input
-      type="text"
-      placeholder="Name your trip"
-      formControlName="tripName"
-      required="Name is required"
-    />
-  </div>
+<div class="container mt-4">
+  <h3>Fill in the info about your trip</h3>
 
-  <!-- dropdown select for trip type -->
-  <div>
-    <label for="tripType">Trip type</label>
-    <select id="tripType" [formControl]="tripTypeControl">
-      <option value="">Select trip type</option>
-      <option value="solo">Solo trip</option>
-      <option value="family">Family trip</option>
-      <option value="friends">Friends trip</option>
-      <option value="business">Business trip</option>
-    </select>
-  </div>
+  <form [formGroup]="tripForm" (ngSubmit)="onSubmit()">
+    <div class="row mb-3">
+      <!-- user's name for the trip -->
+      <div class="col-md-6 d-flex align-items-center">
+        <label class="form-label me-2 form-label-fixed" for=""
+          >Name:<span class="required">*</span></label
+        >
+        <input
+          class="form-control"
+          type="text"
+          placeholder="Name your trip"
+          formControlName="tripName"
+          required="Name is required"
+        />
+      </div>
+    </div>
 
-  <!-- destination -->
-  <div>
-    <label for="">Destination <span class="required">*</span></label>
-    <input
-      type="text"
-      placeholder="Trip destination"
-      formControlName="destination"
-      required="Destination is required"
-    />
-  </div>
+    <!-- destination -->
+    <div class="row mb-3">
+      <div class="col-md-6 d-flex align-items-center">
+        <label class="form-label me-2 form-label-fixed" for=""
+          >Destination:<span class="required">*</span></label
+        >
+        <input
+          class="form-control"
+          type="text"
+          placeholder="Trip destination"
+          formControlName="destination"
+          required="Destination is required"
+        />
+      </div>
+    </div>
 
-  <!-- dates -->
-  <div>
-    <label for="">Arrival Date</label>
-    <input type="date" formControlName="arrivalDate" id="arrivalDate" [min]="arrivalMinDate" />
-  </div>
+    <!-- dates -->
+    <div class="row mb-3">
+      <div class="col-md-6 d-flex align-items-center">
+        <label class="form-label me-2 form-label-fixed" for="">Arrival Date:</label>
+        <input
+          class="form-control"
+          type="date"
+          formControlName="arrivalDate"
+          id="arrivalDate"
+          [min]="arrivalMinDate"
+        />
+      </div>
+    </div>
 
-  <div>
-    <label for="">Departure Date</label>
-    <input type="date" formControlName="departureDate" [min]="departureMinDate" />
-  </div>
+    <div class="row mb-3">
+      <div class="col-md-6 d-flex align-items-center">
+        <label class="form-label me-2 form-label-fixed" for="">Departure Date:</label>
+        <input
+          class="form-control"
+          type="date"
+          formControlName="departureDate"
+          [min]="departureMinDate"
+        />
+      </div>
+    </div>
 
-  <!-- accommodation + parking -->
-  <div formGroupName="accommodation">
-    <label for="accommodationName">Accommodation</label>
-    <input type="text" placeholder="Accommodation name" formControlName="name" />
+    <!-- dropdown select for trip type -->
+    <div class="row mb-3">
+      <div class="col-md-6 d-flex align-items-center">
+        <label class="form-label me-2 form-label-fixed" for="tripType">Trip type:</label>
+        <select id="tripType" class="form-select" [formControl]="tripTypeControl">
+          <option value="">Select trip type</option>
+          <option value="solo">Solo trip</option>
+          <option value="family">Family trip</option>
+          <option value="friends">Friends trip</option>
+          <option value="business">Business trip</option>
+        </select>
+      </div>
+    </div>
 
-    <input type="url" placeholder="Accommodation link" formControlName="link" />
+    <!-- accommodation (name, link, parking) -->
+    <div class="row mb-3" formGroupName="accommodation">
+      <div class="col-md-6">
+        <!-- name -->
+        <div class="d-flex align-items-center mb-2">
+          <label for="accommodationName" class="form-label me-2 form-label-fixed">
+            Accommodation:
+          </label>
+          <input
+            id="accommodationName"
+            class="form-control"
+            type="text"
+            placeholder="Accommodation name"
+            formControlName="name"
+          />
+        </div>
 
-    <input type="checkbox" formControlName="parking" id="parking" />
-    <label for="parking">Parking available</label>
-  </div>
+        <!-- link -->
+        <div class="d-flex align-items-center mb-2">
+          <div class="form-label me-2 form-label-fixed"></div>
+          <input
+            class="form-control"
+            type="url"
+            placeholder="Accommodation link"
+            formControlName="link"
+          />
+        </div>
 
-  <button type="submit" [disabled]="tripForm.invalid" class="submit-btn">Submit</button>
-</form>
+        <!-- parking -->
+        <div class="d-flex align-items-center">
+          <div class="form-label me-2 form-label-fixed"></div>
+          <div class="form-control d-flex align-items-center border-0 p-0">
+            <input
+              class="form-check-input me-2"
+              type="checkbox"
+              formControlName="parking"
+              id="parking"
+            />
+            <label class="form-check-label" for="parking">Parking available</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- button -->
+    <button class="submit-btn btn bg-warning my-2" type="submit" [disabled]="tripForm.invalid">
+      Submit
+    </button>
+  </form>
+</div>

@@ -1,5 +1,10 @@
-<div>
+<div
+  id="home"
+  class="d-flex flex-column justify-content-center align-items-center vh-100 text-center container"
+>
   <h1>Welcome to your travel planner!</h1>
-  <button [routerLink]="['/new']">Plan a new trip</button>
-  <button [routerLink]="['/list']">See all trips</button>
+  <div class="d-flex flex-column flex-md-row mt-4 gap-2">
+    <button class="btn btn-warning" [routerLink]="['/new']">Plan a new trip</button>
+    <button class="btn btn-warning" [routerLink]="['/list']">See all trips</button>
+  </div>
 </div>
