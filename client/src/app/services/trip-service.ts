@@ -4,11 +4,11 @@ import { Observable } from 'rxjs';
 
 export interface Trip {
   tripName: string;
-  tripType: 'solo' | 'family' | 'friends' | 'business' | '';
   destination: string;
   arrivalDate: Date;
   departureDate: Date;
-  accommodation: { name: string; url: string; parking: boolean };
+  tripType: 'solo' | 'family' | 'friends' | 'business' | '';
+  accommodation: { name: string; link: string; parking: boolean };
 }
 
 @Injectable({

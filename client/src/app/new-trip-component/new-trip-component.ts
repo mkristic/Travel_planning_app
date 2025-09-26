@@ -33,13 +33,15 @@ export const dateRangeValidator: ValidatorFn = (
 })
 export class NewTripComponent implements OnInit {
   tripForm: FormGroup = new FormGroup({});
-  router: any;
   tripTypeControl: FormControl = new FormControl('');
-  tripService: any;
   arrivalMinDate!: string;
   departureMinDate!: string;
 
-  constructor(private formBuilder: FormBuilder, router: Router, tripService: TripService) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private tripService: TripService
+  ) {
     // valueChanges observable of form control subscribed to whenever the value of dropdown changes
     this.tripTypeControl.valueChanges.subscribe((value) => {
       console.log('trip type:', value);
