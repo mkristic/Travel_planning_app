@@ -1,5 +1,5 @@
 <div class="d-flex flex-column justify-content-center align-items-center">
-  <div class="border rounded shadow text-start p-5 m-5" *ngIf="trip">
+  <div class="border rounded shadow text-start p-5 m-5 w-50" *ngIf="trip">
     <h3 class="mb-4">{{ trip.tripName }}</h3>
 
     <hr />
@@ -17,16 +17,17 @@
       <i class="bi bi-people me-2"></i><strong>Trip type: </strong> {{ trip.tripType }}
     </p>
     <br />
+    <p><strong>Accommodation</strong></p>
     <p>
       <i class="bi bi-house me-2"></i>
-      <strong>Accommodation name: </strong>
+      <strong>Name: </strong>
       <span *ngIf="trip.accommodation.name; else noAccommodationName">{{
         trip.accommodation.name
       }}</span>
     </p>
     <p>
       <i class="bi bi-globe me-2"></i>
-      <strong>Accommodation link: </strong>
+      <strong>Link: </strong>
       <span *ngIf="trip.accommodation.link; else noAccommodationLink">{{
         trip.accommodation.link
       }}</span>
@@ -35,6 +36,13 @@
       <i class="bi bi-car-front-fill me-2"></i>
       <strong>Parking available: </strong> {{ trip.accommodation.parking ? 'Yes' : 'No' }}
     </p>
+
+    <!-- google maps -->
+    <div class="mb-4" *ngIf="trip.accommodation?.name">
+      <i class="bi bi-geo-alt me-2"></i>
+      <strong>Location</strong>
+      <div id="map" class="mt-2" style="height: 400px; width: 100%; border-radius: 10px"></div>
+    </div>
 
     <!-- buttons -->
     <div class="d-flex justify-content-center align-items-center">
