@@ -1,6 +1,9 @@
+.btn {
+  outline: auto;
+}
+
 /* EDIT button */
 .btnEdit {
-  outline: auto;
   color: orange;
 }
 
@@ -22,7 +25,6 @@
 
 /* DELETE button */
 .btnDelete {
-  outline: auto;
   color: red;
 }
 

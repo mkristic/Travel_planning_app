@@ -1,5 +1,5 @@
 <div class="container mt-4">
-  <h3 class="">Fill in the info about your trip</h3>
+  <h3 class="">Edit your trip</h3>
 
   <form class="pt-2" [formGroup]="tripForm" (ngSubmit)="onSubmit()">
     <div class="row mb-3">
@@ -118,9 +118,22 @@
       </div>
     </div>
 
-    <!-- button -->
-    <button class="submit-btn btn bg-warning my-2" type="submit" [disabled]="tripForm.invalid">
-      Submit
+    <!-- submit button -->
+    <button
+      class="submit-btn btn btn-warning btnCustom my-2"
+      type="submit"
+      [disabled]="tripForm.invalid"
+    >
+      Update
+    </button>
+
+    <!-- cancel button -->
+    <button
+      class="submit-btn btn btn-secondary btnCustom my-2 ms-4"
+      type="button"
+      [routerLink]="['/trips', tripId]"
+    >
+      Cancel
     </button>
   </form>
 </div>

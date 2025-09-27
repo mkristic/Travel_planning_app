@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface Trip {
+  _id?: string;
   tripName: string;
   destination: string;
   arrivalDate: Date;
@@ -36,5 +37,7 @@ export class TripService {
     return this.http.delete<Trip>(`${this.apiUrl}/${id}`);
   }
 
-  updateTrip(id: string) {}
+  updateTrip(id: string, trip: Trip) {
+    return this.http.put<Trip>(`${this.apiUrl}/${id}`, trip);
+  }
 }

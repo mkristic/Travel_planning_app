@@ -20,3 +20,16 @@ body {
 h1 {
   font-weight: 400;
 }
+
+/* for every button if it's not a special button (edit, delete) */
+.btnCustom:hover {
+  background-color: #0b5ed7;
+  color: white;
+  transform: scale(1.05); /* enlarge */
+}
+
+.btnCustom:active {
+  background-color: #0b5ed7;
+  color: white;
+  transform: scale(0.98); /*  shrink */
+}

@@ -1,0 +1,53 @@
+<div class="d-flex flex-column justify-content-center align-items-center">
+  <div class="border rounded shadow text-start p-5 m-5" *ngIf="trip">
+    <h3 class="mb-4">{{ trip.tripName }}</h3>
+
+    <hr />
+
+    <p class="textStrong">
+      <i class="bi bi-geo me-2"></i><strong>Destination: </strong> {{ trip.destination }}
+    </p>
+    <p>
+      <i class="bi bi-calendar-range me-2"></i>
+      <strong>Dates: </strong> {{ trip.arrivalDate | date : 'dd.MM.yyyy' }} -
+      {{ trip.departureDate | date : 'dd.MM.yyyy' }}
+    </p>
+
+    <p *ngIf="trip.tripType; else noType">
+      <i class="bi bi-people me-2"></i><strong>Trip type: </strong> {{ trip.tripType }}
+    </p>
+    <br />
+    <p>
+      <i class="bi bi-house me-2"></i>
+      <strong>Accommodation name: </strong>
+      <span *ngIf="trip.accommodation.name; else noAccommodationName">{{
+        trip.accommodation.name
+      }}</span>
+    </p>
+    <p>
+      <i class="bi bi-globe me-2"></i>
+      <strong>Accommodation link: </strong>
+      <span *ngIf="trip.accommodation.link; else noAccommodationLink">{{
+        trip.accommodation.link
+      }}</span>
+    </p>
+    <p>
+      <i class="bi bi-car-front-fill me-2"></i>
+      <strong>Parking available: </strong> {{ trip.accommodation.parking ? 'Yes' : 'No' }}
+    </p>
+
+    <!-- buttons -->
+    <div class="d-flex justify-content-center align-items-center">
+      <button class="btn mx-2 mt-2 btnEdit" [routerLink]="['/trips', trip._id, 'edit']">
+        <i class="bi bi-pencil-square"></i>
+      </button>
+      <button class="btn mx-2 mt-2 btnDelete" (click)="onDelete(trip._id)">
+        <i class="bi bi-trash"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<ng-template #noType>Trip type not specified</ng-template>
+<ng-template #noAccommodationName>-</ng-template>
+<ng-template #noAccommodationLink>-</ng-template>

@@ -9,7 +9,7 @@ const tripSchema = new mongoose.Schema({
     type: String,
     enum: ["solo", "family", "friends", "business", ""],
   },
-  accommodation: { name: String, url: String, parking: Boolean },
+  accommodation: { name: String, link: String, parking: Boolean },
 });
 
 module.exports = mongoose.model("Trip", tripSchema);
