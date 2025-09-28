@@ -1,0 +1,85 @@
+<div class="container my-4">
+  <h2 class="mb-2">Bucket List</h2>
+  <hr />
+
+  <div class="row">
+    <!-- left (content) -->
+    <div class="col-md-7">
+      <div *ngFor="let section of sections" class="mb-4">
+        <h4>{{ section | titlecase }}</h4>
+
+        <!-- items list -->
+        <ul class="list-group mb-2">
+          <li
+            *ngFor="let item of items[section]"
+            class="list-group-item d-flex justify-content-between align-items-center"
+          >
+            <div class="d-flex align-items-center gap-2">
+              <input
+                type="checkbox"
+                [checked]="item.visited"
+                (change)="toggleVisited(section, item)"
+              />
+
+              <!-- display vs edit -->
+              <span *ngIf="editingId !== item._id">{{ item.name }}</span>
+              <input
+                *ngIf="editingId === item._id"
+                type="text"
+                [(ngModel)]="editingName"
+                class="form-control form-control-sm w-auto"
+              />
+            </div>
+
+            <!-- action buttons -->
+            <div>
+              <button
+                *ngIf="editingId !== item._id"
+                class="btn btn-sm btn-outline-secondary me-2"
+                (click)="startEdit(item)"
+              >
+                <i class="bi bi-pencil-square"></i>
+              </button>
+              <button
+                *ngIf="editingId === item._id"
+                class="btn btn-sm btn-success me-2"
+                (click)="saveEdit(section, item._id!)"
+              >
+                Save
+              </button>
+              <button
+                class="btn btn-sm btn-outline-danger"
+                (click)="deleteItem(section, item._id!)"
+              >
+                <i class="bi bi-trash"></i>
+              </button>
+            </div>
+          </li>
+        </ul>
+
+        <!-- add new item -->
+        <div class="input-group">
+          <input
+            type="text"
+            [(ngModel)]="newItem[section]"
+            class="form-control"
+            placeholder="New {{ section }}"
+          />
+          <button class="btn btn-outline-success" (click)="addItem(section)">
+            <i class="bi bi-plus"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- right (photo) -->
+    <div class="col-md-5 d-flex justify-content-center align-items-center">
+      <img
+        src="https://img.freepik.com/free-photo/travel-concept-with-worldwide-landmarks_23-2149153263.jpg"
+        alt="Travel Planning"
+        class="img-fluid rounded shadow"
+        style="max-height: 400px; object-fit: cover"
+      />
+    </div>
+  </div>
+</div>

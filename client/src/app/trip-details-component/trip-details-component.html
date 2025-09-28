@@ -46,10 +46,13 @@
 
     <!-- buttons -->
     <div class="d-flex justify-content-center align-items-center">
-      <button class="btn mx-2 mt-2 btnEdit" [routerLink]="['/trips', trip._id, 'edit']">
+      <button
+        class="btn mx-2 mt-2 btn-outline-secondary"
+        [routerLink]="['/trips', trip._id, 'edit']"
+      >
         <i class="bi bi-pencil-square"></i>
       </button>
-      <button class="btn mx-2 mt-2 btnDelete" (click)="onDelete(trip._id)">
+      <button class="btn mx-2 mt-2 btn-outline-danger" (click)="onDelete(trip._id)">
         <i class="bi bi-trash"></i>
       </button>
     </div>

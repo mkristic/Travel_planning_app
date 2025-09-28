@@ -120,17 +120,13 @@
     </div>
 
     <!-- submit button -->
-    <button
-      class="submit-btn btn btn-warning btnCustom my-2"
-      type="submit"
-      [disabled]="tripForm.invalid"
-    >
+    <button class="submit-btn btn btn-success my-2" type="submit" [disabled]="tripForm.invalid">
       Update
     </button>
 
     <!-- cancel button -->
     <button
-      class="submit-btn btn btn-secondary btnCustom my-2 ms-4"
+      class="submit-btn btn btn-secondary my-2 ms-4"
       type="button"
       [routerLink]="['/trips', tripId]"
     >

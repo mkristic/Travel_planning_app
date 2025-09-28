@@ -1,5 +1,6 @@
 <div class="container mt-4">
-  <h3 class="">Fill in the info about your trip</h3>
+  <h3 class="mb-2">Fill in the info about your trip</h3>
+  <hr />
 
   <form class="pt-2" [formGroup]="tripForm" (ngSubmit)="onSubmit()">
     <div class="row mb-3">
@@ -120,7 +121,11 @@
     </div>
 
     <!-- button -->
-    <button class="submit-btn btn bg-warning my-2" type="submit" [disabled]="tripForm.invalid">
+    <button
+      class="submit-btn btn bg-warning btnCustom my-2"
+      type="submit"
+      [disabled]="tripForm.invalid"
+    >
       Submit
     </button>
   </form>

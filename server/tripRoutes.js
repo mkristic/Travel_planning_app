@@ -5,8 +5,12 @@ const router = express.Router();
 
 // GET all
 router.get("/", async (req, res) => {
-  const trips = await Trip.find();
-  res.json(trips);
+  try {
+    const trips = await Trip.find().sort({ arrivalDate: 1 });
+    res.json(trips);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to fetch all trips" });
+  }
 });
 
 // GET one

@@ -1,8 +1,60 @@
 <nav class="navbar bg-warning sticky-top">
-  <div class="container">
+  <div class="container d-flex justify-content-between align-items-center">
+    <!-- icon + home (left) -->
     <a class="navbar-brand text-light" href="#">
       <i class="bi bi-map"></i>
       <strong style="color: black"> Travel Planner </strong>
     </a>
+
+    <!-- other buttons (right ) -->
+    <div class="d-none d-md-flex gap-2">
+      <!-- home page: only bucket list button -->
+      <div *ngIf="isHome()">
+        <button class="btn btn-dark" [routerLink]="['/bucket-list']">Bucket List</button>
+      </div>
+
+      <!-- other pages: all three buttons -->
+      <div *ngIf="!isHome()" class="d-flex gap-2">
+        <button class="btn btn-dark" [routerLink]="['/new']">Plan a new trip</button>
+        <button class="btn btn-dark" [routerLink]="['/list']">See all trips</button>
+        <button class="btn btn-dark" [routerLink]="['/bucket-list']">Bucket List</button>
+      </div>
+    </div>
+
+    <!-- for smaller screens -->
+    <div class="d-md-none dropdown">
+      <button
+        class="btn btn-dark dropdown-toggle"
+        type="button"
+        id="mobileMenuDropdown"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        <i class="bi bi-list"></i>
+      </button>
+
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="mobileMenuDropdown">
+        <!-- home page: only bucket list -->
+        <ng-container *ngIf="isHome()">
+          <li>
+            <a class="dropdown-item" [routerLink]="['/bucket-list']"> Bucket List </a>
+          </li>
+        </ng-container>
+
+        <!-- other pages: all options -->
+        <ng-container *ngIf="!isHome()">
+          <li>
+            <a class="dropdown-item" [routerLink]="['/new']"> Plan a new trip </a>
+          </li>
+          <li>
+            <a class="dropdown-item" [routerLink]="['/list']"> See all trips </a>
+          </li>
+          <li><hr class="dropdown-divider" /></li>
+          <li>
+            <a class="dropdown-item" [routerLink]="['/bucket-list']"> Bucket List </a>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
   </div>
 </nav>

@@ -32,7 +32,7 @@ export class TripListComponent implements OnInit {
       this.tripService.deleteTrip(id).subscribe({
         next: () => {
           console.log('Trip deleted');
-          this.router.navigate(['/list']);
+          this.trips = this.trips.filter((trip) => trip._id !== id);
         },
         error: (err) => console.error('Error deleting trip: ', err),
       });
