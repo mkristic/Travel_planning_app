@@ -3,21 +3,21 @@
     <!-- icon + home (left) -->
     <a class="navbar-brand text-light" href="#">
       <i class="bi bi-map"></i>
-      <strong style="color: black"> Travel Planner </strong>
+      <strong style="color: black"> Travel planner </strong>
     </a>
 
     <!-- other buttons (right ) -->
     <div class="d-none d-md-flex gap-2">
       <!-- home page: only bucket list button -->
       <div *ngIf="isHome()">
-        <button class="btn btn-dark" [routerLink]="['/bucket-list']">Bucket List</button>
+        <button class="btn btn-dark" [routerLink]="['/bucket-list']">Bucket list</button>
       </div>
 
       <!-- other pages: all three buttons -->
       <div *ngIf="!isHome()" class="d-flex gap-2">
         <button class="btn btn-dark" [routerLink]="['/new']">Plan a new trip</button>
         <button class="btn btn-dark" [routerLink]="['/list']">See all trips</button>
-        <button class="btn btn-dark" [routerLink]="['/bucket-list']">Bucket List</button>
+        <button class="btn btn-dark" [routerLink]="['/bucket-list']">Bucket list</button>
       </div>
     </div>
 
@@ -37,7 +37,7 @@
         <!-- home page: only bucket list -->
         <ng-container *ngIf="isHome()">
           <li>
-            <a class="dropdown-item" [routerLink]="['/bucket-list']"> Bucket List </a>
+            <a class="dropdown-item" [routerLink]="['/bucket-list']"> Bucket list </a>
           </li>
         </ng-container>
 
